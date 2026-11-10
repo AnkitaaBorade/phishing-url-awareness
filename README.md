@@ -96,5 +96,5 @@ This project is intended for educational awareness. It helps users recognize com
 ## 11. Author
 
 - **Name:** Ankita Ajay Borade
-- **Batch/Course:** Batch 1 , 
-- **GitHub Username:** [Your GitHub Username]
+- **Batch/Course:** Batch 1 , Ewb AI POWERED CYBERSECURITY INTERNSHIP
+- **GitHub Username:** https://github.com/AnkitaaBorade/phishing-url-awareness
