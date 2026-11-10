@@ -1,100 +1,87 @@
-# Phishing URL Awareness Checker
+# EWB Phishing URL Awareness Checker
 
-## 1. Project Overview
+## Overview
 
-The Phishing URL Awareness Checker is a Python-based command-line tool that checks URLs for common phishing warning signs. It helps users understand suspicious URL patterns and encourages safer browsing habits.
+Phishing is a type of cyberattack in which attackers use fake or misleading links to trick people into sharing sensitive information. This Python tool checks the text of a URL for common phishing warning signs and displays the results to help users become more aware of suspicious links.
 
-The program checks the URL text without opening or visiting any website.
+## Features
 
-## 2. Features
+- Detects an `@` symbol in the URL.
+- Flags unusually long URLs (over 100 characters).
+- Flags IP-address hostnames.
+- Flags many hostname segments (5 or more).
+- Flags punycode-style hostnames (`xn--`).
+- Flags the HTTP scheme.
+- Allows users to check multiple URLs using a repeat/quit option.
+- Handles malformed URLs without crashing.
 
-The tool checks for six warning signs:
+## Requirements
 
-1. Presence of the `@` symbol.
-2. URL length greater than 100 characters.
-3. IP address used as the hostname.
-4. Five or more hostname segments.
-5. Punycode marker (`xn--`).
-6. Use of HTTP instead of HTTPS.
+Python 3.10 or later. No extra packages.
 
-It displays all detected warning signs and provides a cautionary message when no listed warning signs are found.
+## How to Run
 
-## 3. Requirements
-
-- Python 3.x
-- No external Python packages required.
-
-The project uses Python's built-in libraries.
-
-## 4. How to Run
-
-1. Open the project folder in VS Code.
-2. Open the terminal.
-3. Run the following command:
-
+**Windows:**
 ```bash
 python phishing_checker.py
 ```
 
-4. Enter a sample URL when prompted.
-5. Type `q` to quit the program.
+**Mac/Linux:**
+```bash
+python3 phishing_checker.py
+```
 
-## 5. Example Output
+## Example Output
 
 **Input:**
-
 ```text
 https://www.example.com/login
 ```
 
-**Output:**
-
+**Result:**
 ```text
-Result:
-- No listed warning signs found. This does NOT prove safety.
+No listed warning signs found.
 ```
 
-## 6. Testing
+Note: This result does not prove that the website is safe.
 
-The program was tested using five sample URLs provided in the project workbook.
+## Testing
 
-The test cases and actual results are documented in:
+| # | Input | Expected | Actual | Result |
+|---|---|---|---|---|
+| 1 | `https://www.example.com/login` | No warning signs | No listed warning signs found | PASS |
+| 2 | `http://192.0.2.10/account`     | IP hostname and HTTP warnings | IP address warning + HTTP warning | PASS |
+| 3 | `http://example.com@sample.invalid/login` | @ symbol and HTTP warnings | @ symbol warning + HTTP warning | PASS |
+| 4 | `https://a.b.c.d.e.example.invalid/path`  | Many hostname segments warning | Many hostname segments/subdomains warning | PASS |
+| 5 | `https://xn--example.invalid/` | Punycode warning | Punycode-style hostname warning | PASS |
 
-`tests/test_samples.md`
+Additional checks were performed using blank and malformed URL inputs. The program handled them without crashing.
 
-All five sample tests produced the expected results.
+## Screenshots
 
-## 7. Screenshots
+![Sample run](screenshots/sample_run.png)
 
-### Sample Run
+![Test results](screenshots/test_results.png)
 
-![Sample Run](screenshots/sample_run.png)
+## Improvements
 
-### Test Results
+1. **Repeat/quit loop** - Added an option to check multiple URLs without restarting the program. This makes the tool easier to use. Tested by checking multiple URLs in one session and choosing the quit option.
 
-![Test Results](screenshots/test_results.png)
+2. **Malformed URL handling** - Added input validation to handle malformed URLs and prevent the program from crashing. Tested using an invalid URL such as `http://[bad`.
 
-## 8. Improvements Implemented
+## Limitations
 
-Two improvements were implemented:
+- The tool checks URL text only. It does not visit or scan websites.
+- It cannot confirm whether a website is genuinely safe or malicious.
+- A URL with no listed warning signs may still be unsafe.
+- The tool does not check website content, certificates, or reputation.
 
-- **Loop and Quit Option:** Users can check multiple URLs without restarting the program. They can type `q` to exit.
-- **Malformed URL Handling:** The program handles malformed URL input without crashing.
+## Ethical Use
 
-## 9. Limitations
+This project is created for educational and defensive cybersecurity awareness. It uses sample URLs to demonstrate common phishing warning signs. It does not send phishing messages, collect credentials, or scan websites.
 
-- The program only checks visible URL text.
-- It does not open or visit websites.
-- It does not scan for malware.
-- It does not use online reputation services.
-- It cannot guarantee whether a URL is safe or malicious.
+## Author
 
-## 10. Ethical Use
-
-This project is intended for educational awareness. It helps users recognize common suspicious URL patterns. It should not be used to make final security decisions or to claim that a website is completely safe.
-
-## 11. Author
-
-- **Name:** Ankita Ajay Borade
-- **Batch/Course:** Batch 1 , Ewb AI POWERED CYBERSECURITY INTERNSHIP
-- **GitHub Username:** https://github.com/AnkitaaBorade/phishing-url-awareness
+**Name:** Ankita Borade  
+**GitHub:** AnkitaaBorade  
+**Repository:** https://github.com/AnkitaaBorade/phishing-url-awareness
