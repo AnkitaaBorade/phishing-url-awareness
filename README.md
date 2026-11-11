@@ -80,6 +80,15 @@ Additional checks were performed using blank and malformed URL inputs. The progr
 
 This project is created for educational and defensive cybersecurity awareness. It uses sample URLs to demonstrate common phishing warning signs. It does not send phishing messages, collect credentials, or scan websites.
 
+## Additional Documents
+
+### Cybersecurity Assessment 01
+[View Assessment 01 PDF](documents/EWB-Cybersecurity-Assessment-01-AnkitaBorade.pdf)
+
+### Phishing URL Awareness Checker Workbook
+[View Project Workbook](documents/Phishing_URL_Checker_Workbook.pdf)
+
+
 ## Author
 
 **Name:** Ankita Borade  
